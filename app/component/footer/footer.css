@@ -1,0 +1,9 @@
+.mein-footer{
+    width:100%;
+    height: fit-content;
+    background: linear-gradient(to right, #2564eba2, #9233eaa6);
+}
+.footer-container{
+    display : flex;
+    justify-content: space-between;
+}
