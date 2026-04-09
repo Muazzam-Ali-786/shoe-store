@@ -1,0 +1,91 @@
+/* Cancel Page Styles */
+.cancel-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+}
+
+.cancel-card {
+  background: white;
+  padding: 4rem;
+  border-radius: 25px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.cancel-icon {
+  font-size: 6rem;
+  color: #dc3545;
+  margin-bottom: 1.5rem;
+}
+
+.cancel-title {
+  font-size: 2.5rem;
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.cancel-message {
+  font-size: 1.3rem;
+  color: #666;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.action-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  flex: 1;
+  min-width: 140px;
+}
+
+.cart-btn {
+  background: #ffc107;
+  color: #333;
+}
+
+.cart-btn:hover {
+  background: #e0a800;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255,193,7,0.4);
+}
+
+.shopping-btn {
+  background: linear-gradient(135deg, #0070f3, #0056b3);
+  color: white;
+}
+
+.shopping-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,112,243,0.4);
+}
+
+@media (max-width: 480px) {
+  .cancel-card {
+    padding: 3rem 2rem;
+    margin: 1rem;
+  }
+  
+  .action-group {
+    flex-direction: column;
+  }
+}
+

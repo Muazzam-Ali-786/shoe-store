@@ -1,0 +1,100 @@
+.home-page {
+  min-height: 100vh;
+}
+
+.hero {
+  text-align: center;
+  padding: 0;
+  height: 60vh;
+  margin-top: 80px; /* for header */
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 2rem;
+}
+
+.hero h2 {
+  font-size: 3rem;
+  margin: 0 0 1rem 0;
+  font-weight: 300;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin: 0 0 2rem 0;
+  opacity: 0.9;
+}
+
+.hero-search {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+.hero-search-box {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin: 0 0.5rem;
+}
+
+.cta-btn.primary {
+  background: white;
+  color: #667eea;
+}
+
+.cta-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.products-section {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 1rem;
+    margin-top: 70px;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero-search-box {
+    font-size: 1rem;
+    padding: 0.875rem 1.25rem;
+  }
+
+  .products-section {
+    padding: 2rem 1rem;
+  }
+}

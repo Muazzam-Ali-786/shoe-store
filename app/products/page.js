@@ -1,24 +1,24 @@
 "use client";
-import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
-import ProductCard from './component/ProductCard';
-import shoesData from '../lib/shoesData';
-import './page.css';
-import './products/products.css';
 
-export default function HomePage() {
+import shoesData from '@/lib/shoesData';
+import ProductCard from '../component/ProductCard';
+import './products.css';
+import { useSearchParams } from 'next/navigation';
+
+export default function ProductsPage() {
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
+
   const filteredProducts = shoesData.filter(product =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     product.brand.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
-    <div className="home-page">
-      <div className="products-section">
-        <div className="page-header">
-          <h1>{searchQuery ? `Search: "${searchQuery}" (${filteredProducts.length} results)` : 'Featured Products'}</h1>
+    <div className="products-page">
+      <div className="products-container">
+        <div className="products-header">
+          <h1>Our Products</h1>
         </div>
         <div className="products-grid">
           {filteredProducts.map((product) => (
