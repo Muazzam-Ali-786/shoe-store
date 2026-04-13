@@ -1,14 +1,16 @@
 "use client";
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import CheckoutBtn from './CheckoutBtn';
+import { increaseQuantity, decreaseQuantity, removeFromCart } from '@/lib/reducers/cartSlice';
 import './cart.css';
 
 export default function CartPage() {
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items || []);
-  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0, 0);
-  const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0, 0);
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   if (cartItems.length === 0) {
     return (
@@ -38,10 +40,26 @@ export default function CartPage() {
               <div className="cart-item-details">
                 <h3>{item.name}</h3>
                 <p>{item.brand}</p>
-                <div className="quantity-controls">
-                  <button>-</button>
-                  <span>{item.quantity}</span>
-                  <button>+</button>
+                <div className="cart-qty-controls">
+                  <button 
+                    className="cart-qty-btn"
+                    onClick={() => dispatch(decreaseQuantity(item.id))}
+                  >
+                    −
+                  </button>
+                  <span className="cart-qty-value">{item.quantity}</span>
+                  <button 
+                    className="cart-qty-btn"
+                    onClick={() => dispatch(increaseQuantity(item.id))}
+                  >
+                    +
+                  </button>
+                  <button 
+                    className="cart-remove-item"
+                    onClick={() => dispatch(removeFromCart(item.id))}
+                  >
+                    🗑️
+                  </button>
                 </div>
               </div>
               <div className="cart-item-price">

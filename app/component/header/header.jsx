@@ -50,6 +50,7 @@ export default function Header() {
             <li><Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>Home</Link></li>
             <li><Link href="/collections" className={`nav-link ${pathname.startsWith('/collections') ? 'active' : ''}`}>Collections</Link></li>
             <li><Link href="/products" className={`nav-link ${pathname.startsWith('/products') ? 'active' : ''}`}>Products</Link></li>
+            <li><Link href="/admin" className={`nav-link ${pathname === '/admin' ? 'active' : ''}`}>Admin</Link></li>
             <li><Link href="/cart" className={`nav-link ${pathname === '/cart' ? 'active' : ''}`}>Cart({cartCount})</Link></li>
 {user ? (
               <>
@@ -88,6 +89,7 @@ export default function Header() {
             <li><Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>Home</Link></li>
             <li><Link href="/collections" className={`nav-link ${pathname.startsWith('/collections') ? 'active' : ''}`}>Collections</Link></li>
             <li><Link href="/products" className={`nav-link ${pathname.startsWith('/products') ? 'active' : ''}`}>Products</Link></li>
+            <li><Link href="/admin" className={`nav-link ${pathname === '/admin' ? 'active' : ''}`}>Admin</Link></li>
             <li><Link href="/cart" className={`nav-link ${pathname === '/cart' ? 'active' : ''}`}>Cart({cartCount})</Link></li>
             {user ? (
               <>

@@ -1,10 +1,17 @@
-
+import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(req) {
   try {
     const body = await req.json();
+    const host = req.headers.get('host');
+    const protocol = req.headers.get('x-forwarded-proto') || 'http';
+    const origin = req.headers.get('origin') || `${protocol}://${host}`;
+
+    if (!body.items || body.items.length === 0) {
+      return Response.json({ error: "No items provided in cart" }, { status: 400 });
+    }
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -13,18 +20,23 @@ export async function POST(req) {
           currency: "usd",
           product_data: {
             name: item.name,
+            description: item.description,
+            images: item.imageURL 
+              ? [item.imageURL.startsWith('http') ? item.imageURL : `${origin}${item.imageURL.startsWith('/') ? '' : '/'}${item.imageURL}`] 
+              : [],
           },
-          unit_amount: item.price * 100,
+          unit_amount: Math.round(item.price * 100), // Stripe expects cents
         },
         quantity: item.quantity,
       })),
       mode: "payment",
-      success_url: "http://localhost:3000/success",
-      cancel_url: "http://localhost:3000/cancel",
+      success_url: `${origin}/success`,
+      cancel_url: `${origin}/cancel`,
     });
 
-    return Response.json({ id: session.id });
+    return Response.json({ id: session.id, url: session.url });
   } catch (err) {
-    return Response.json({ error: err.message });
+    console.error("Stripe Checkout Error:", err);
+    return Response.json({ error: err.message }, { status: 500 });
   }
-}
+}

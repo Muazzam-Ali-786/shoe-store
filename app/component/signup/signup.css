@@ -147,6 +147,34 @@
   background: rgba(255,255,255,0.15);
 }
 
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.input-group input {
+  width: 100%;
+}
+
+.error-msg {
+  color: #ff4d4d;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding-left: 0.5rem;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.input-error {
+  border-color: #ff4d4d !important;
+  background: rgba(255, 77, 77, 0.1) !important;
+}
+
+.brand-logo {
+  text-transform: uppercase;
+  letter-spacing: 4px !important;
+}
+
 .submit-btn {
   padding: 1.2rem;
   background: linear-gradient(135deg, #ffd700, #ffed4e);

@@ -13,7 +13,10 @@ export async function POST(request) {
     const existingUser = await User.findOne({ $or: [{ email }, { username }] });
 
     if (existingUser) {
-      return Response.json({ success: false, message: 'User already exists' }, { status: 400 });
+      if (existingUser.email === email) {
+        return Response.json({ success: false, message: 'This email already exists. Please try a new email.' }, { status: 400 });
+      }
+      return Response.json({ success: false, message: 'Username already taken.' }, { status: 400 });
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -26,7 +29,13 @@ export async function POST(request) {
       success: true, 
       message: 'Signup successful',
       token,
-      user: { id: user._id, email: user.email, username: user.username }
+      user: { 
+        id: user._id, 
+        email: user.email, 
+        username: user.username,
+        cart: [],
+        wishlist: []
+      }
     });
   } catch (error) {
     console.error('Signup error:', error);

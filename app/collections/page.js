@@ -5,7 +5,7 @@ import ProductCard from '../component/ProductCard';
 import shoesData from '../../lib/shoesData';
 import './collections.css';
 
-const categories = ["all", "babies", "youngs", "ladies", "mens"];
+const categories = ["all","Mens","Womens",];
 
 export default function CollectionsPage() {
   const searchParams = useSearchParams();

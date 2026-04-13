@@ -1,0 +1,175 @@
+================================================================================
+                     SHOE STORE - PROJECT GUIDE & UPDATES
+================================================================================
+
+DATE: April 11, 2026
+STATUS: Major Features Implemented (v3.0 - Final Hardening)
+
+This document serves as a guide for all the features added and fixed today.
+The goal was to transform the store into a real-life premium experience.
+
+--------------------------------------------------------------------------------
+1. NEW FEATURES ADDED
+--------------------------------------------------------------------------------
+
+A. ADMIN PANEL (/admin)
+   - Function: Allows admins to add new products to the store dynamically.
+   - Usage: Enter product details (name, brand, price, stock, image URL, etc.)
+     and click "Add Product".
+   - Technology: Connected to MongoDB via a dedicated API route.
+
+B. WISHLIST PAGE (/wishlist)
+   - Function: A dedicated space for users to see their favorite products.
+   - UI: Premium grid with glassmorphism effects and easy removal buttons.
+
+C. PRODUCT DETAIL ENHANCEMENTS
+   - Quantity Controls: Added +/- buttons with stock limits.
+   - Dynamic Total: Subtotal updates instantly based on quantity.
+   - Feedback: Toast notifications appear when adding to cart.
+
+D. SMART CART & CHECKOUT
+   - Syncing: The "Checkout" button now shows the total number of items
+     (e.g., "Checkout (3 items) - $150.00").
+   - Cart Interaction: Added +/- and Remove buttons inside the Cart page.
+
+--------------------------------------------------------------------------------
+2. ADVANCED AUTHENTICATION & SECURITY
+--------------------------------------------------------------------------------
+
+A. GUEST PROTECTION (Auto-Redirect)
+   - Function: If a user is not logged in and tries to click "Add to Cart",
+     the system will automatically redirect them to the Login page. 
+   - message: "Please login first to add items to your cart".
+
+B. REAL-TIME FORM VALIDATION
+   - Login & Signup forms now have live validation using 'Yup' and 'React Hook Form'.
+   - Errors (like invalid email or short password) appear instantly in RED
+     under the input boxes.
+   - Password Requirement: Minimum 6 characters.
+
+C. SPECIFIC ERROR MESSAGES
+   - Login: If the email doesn't exist, it shows: "Email not found. Please create an account to login."
+   - Signup: If the email is already in use, it shows: "This email already exists. Please try a new email."
+
+--------------------------------------------------------------------------------
+3. DATABASE & DATA ISOLATION
+--------------------------------------------------------------------------------
+
+A. USER DATA PRIVACY (Isolation)
+   - Each user has an independent Cart and Wishlist.
+   - Data is stored in MongoDB connected to the User Profile.
+   - Logout Purge: Logging out wipes ALL local data instantly.
+   - Persistence: Refreshing the page DOES NOT remove items because the session
+     is verified with the database on every load.
+
+B. DATABASE SEEDING
+   - API: http://localhost:3000/api/seed (Visit once to fill the store).
+
+--------------------------------------------------------------------------------
+5. STRIPE PAYMENT INTEGRATION
+--------------------------------------------------------------------------------
+
+A. SECURE PAYMENTS
+   - Function: Enables real checkout experience using Stripe.
+   - UI: Users are redirected to a secure Stripe-hosted checkout page.
+   - Validation: Backend verifies cart items and calculates totals automatically.
+
+B. DYNAMIC REDIRECTION
+   - Success Page (/success): Premium animated page shown after successful payment.
+   - Cancel Page (/cancel): Friendly recovery page shown if payment is aborted.
+
+C. AUTOMATED CART MANAGEMENT
+   - The user's Redux cart is automatically cleared INSTANTLY upon a successful
+     payment to prevent duplicate orders.
+
+D. CART TO CHECKOUT FLOW
+   - Function: The "Checkout" button in the cart now acts as a "Proceed to Checkout" 
+     gateway, directing users to the detailed summary page.
+   - UI: Modern dark gradient styling with shadow effects.
+
+E. INTERACTIVE IMAGE GALLERY (Detail Page)
+   - Function: Users can view multiple product angles by hovering over 4 small
+     thumbnail images below the main product display.
+   - Behavior: Instantly updates the main view on Hover (Desktop) or Click (Mobile).
+   - UI: Premium glassmorphism effects and active border highlights.
+
+--------------------------------------------------------------------------------
+6. USER GUIDE (HOW TO USE)
+--------------------------------------------------------------------------------
+
+STEP 1: SEED DATABASE
+Visit 'http://localhost:3000/api/seed' to populate products.
+
+STEP 2: ADD TO CART
+Login, select your favorite shoes, and add them to the cart.
+
+STEP 3: PROCEED TO CHECKOUT
+Click "Proceed to Checkout" in your Cart to see the Order Summary.
+
+STEP 4: STRIPE PAYMENT
+Enter test card details on the Stripe page to simulate a transaction.
+
+STEP 5: VERIFY SUCCESS
+Ensure you get redirected to the Success page and your cart is now empty.
+
+================================================================================
+DATE: April 13, 2026
+STATUS: Major Fixes & Persistence Hardening implemented
+================================================================================
+
+1. IMAGE GALLERY & ASSETS RESOLUTION
+   - Audited all product images and corrected paths in 'lib/shoesData.js'.
+   - Organized assets into proper subdirectories (sandals, sneakers-1, sneakers-2).
+   - Fixed the "2nd thumbnail" issue by ensuring every path is an absolute local path.
+
+2. ADMIN & DATABASE CONFIGURATION
+   - Header Links: Added "Admin" link to both Desktop and Mobile navigations.
+   - DB Connection Fix: Resolved mismatch between MONGO_URI and MONGODB_URI keys.
+   - Authentication: Fixed the "Persistent Login" bug where users were auto-logged
+     in even after logout due to Redux-Persist rehydration.
+
+3. FULL CART & WISHLIST PERSISTENCE
+   - Feature: Cart and Wishlist items now survive page refreshes for all users.
+   - Syncing: Automatically saves user cart/wishlist to MongoDB upon every change.
+   - Restoration: When a user logs back in, their previous data is restored from
+     the cloud database instantly.
+
+4. STRIPE API MIGRATION & ENHANCEMENT
+   - Updated the checkout flow to use 'session.url' instead of the deprecated
+     'stripe.redirectToCheckout' function.
+   - Added 'product_data.description' to line items so customers can see product
+     details directly on the Stripe secure page.
+   - Ensures compatibility with latest Stripe.js version (2025+).
+
+--------------------------------------------------------------------------------
+URDU EXPLANATION (ROMAN URDU)
+--------------------------------------------------------------------------------
+
+Yar, aaj hum ne store mein kaafi bari tabdeeliyaan ki hain taake yeh bilkul
+real-life professional store ki tarah kaam kare.
+
+1. Image Gallery: 
+   Jo images show nahi ho rahi thi (khas tor par 2nd small image), unka raasta
+   (path) galat tha. Maine saari images ko unki sahi jagah (folders) ke mutabiq
+   set kar diya hai.
+
+2. Admin Link & DB Fix: 
+   Admin panel ka link ab Header mein mojud hai. Saath hi, database connection
+   mein aik choti si typo thi jis ki wajah se data Atlas par nahi ja raha tha,
+   usay fix kar diya gaya hai.
+
+3. Persistence (Data Mehfooz Rakhna):
+   Sab se bara masla yeh tha ke refresh karne par cart khali ho jata tha. Maine
+   "Redux Persist" aur "Database Sync" laga diya hai. Ab agar aap page refresh
+   karein ya logout kar ke dobara login karein, aapka cart aur wishlist waisa
+   hi rahay ga jaisa aap ne chora tha.
+
+4. Stripe Checkout Update:
+   Stripe ne purana tareeqa khatam kar diya tha jis se error aa raha tha. Maine
+   naya "Direct URL" wala tareeqa laga diya hai. Saath hi, ab checkout page par
+   aapko product ki **description** bhi nazar aaye gi taake user ko pata ho
+   woh kya kharid raha hai.
+
+================================================================================
+                                END OF DOCUMENT
+================================================================================
