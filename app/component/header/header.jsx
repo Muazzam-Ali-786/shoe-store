@@ -2,7 +2,7 @@
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout, verifyToken } from '../../../lib/reducers/authSlice';
+import { logout, verifyToken } from '@/lib/persistedAuthSlice';
 import Link from 'next/link';
 import './header.css';
 

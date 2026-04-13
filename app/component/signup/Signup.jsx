@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { login, signup } from '../../../lib/reducers/authSlice';
+import { login, signup } from '@/lib/persistedAuthSlice';
 
 // Validation Schemas
 const loginSchema = yup.object().shape({

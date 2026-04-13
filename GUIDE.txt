@@ -117,6 +117,15 @@ DATE: April 13, 2026
 STATUS: Major Fixes & Persistence Hardening implemented
 ================================================================================
 
+CRITICAL: DEPLOYMENT SETTINGS
+----------------------------
+If you are deploying to Vercel/Netlify, you MUST add these Environment Variables 
+in your dashboard, otherwise the app will crash with "apiKey missing" error:
+1. STRIPE_SECRET_KEY
+2. NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+3. MONGODB_URI
+4. JWT_SECRET
+
 1. IMAGE GALLERY & ASSETS RESOLUTION
    - Audited all product images and corrected paths in 'lib/shoesData.js'.
    - Organized assets into proper subdirectories (sandals, sneakers-1, sneakers-2).

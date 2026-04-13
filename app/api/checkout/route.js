@@ -1,6 +1,13 @@
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// Initialize inside the handler or with a check to avoid build-time errors
+const getStripe = () => {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error("STRIPE_SECRET_KEY is missing in environment variables");
+  }
+  return new Stripe(key);
+};
 
 export async function POST(req) {
   try {
@@ -13,6 +20,7 @@ export async function POST(req) {
       return Response.json({ error: "No items provided in cart" }, { status: 400 });
     }
 
+    const stripe = getStripe();
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: body.items.map((item) => ({
