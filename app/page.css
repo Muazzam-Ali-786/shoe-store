@@ -81,17 +81,28 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 2rem 1rem;
-    margin-top: 70px;
+    height: 50vh;
+    margin-top: 60px;
   }
 
   .hero h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero-search-box {
-    font-size: 1rem;
-    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .cta-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
   }
 
   .products-section {

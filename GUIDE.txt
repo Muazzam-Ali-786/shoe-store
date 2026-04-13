@@ -155,6 +155,12 @@ in your dashboard, otherwise the app will crash with "apiKey missing" error:
    - Confirmed the official Tailwind CSS v4 remains correctly configured in 
      devDependencies for styling.
 
+6. MOBILE RESPONSIVENESS OVERHAUL
+   - Fixed Header overlap and icon alignment for mobile screens.
+   - Reduced typography scale (headings) to prevent text wrapping on small devices.
+   - Restructured Cart items and Product Detail sections to stack vertically on mobile.
+   - Optimized thumbnail galleries and sticky elements for better touch interaction.
+
 --------------------------------------------------------------------------------
 URDU EXPLANATION (ROMAN URDU)
 --------------------------------------------------------------------------------
@@ -188,6 +194,11 @@ real-life professional store ki tarah kaam kare.
    Project mein aik faaltu "tailwind" package install tha jis ki wajah se build 
    ke waqt boht saare warnings aa rahe thay. Maine usay remove kar diya hai taake
    aapka build saaf aur fast ho jaye.
+
+6. Mobile (Responsive) Fixes:
+   Mobile par headings boht bari dikhayi de rahi thi aur cheezein aik dusre ke 
+   upar aa rahi thin. Maine pooray store ko mobile ke liye set kar diya hai.
+   Ab menu, cart aur product details mobile par bilkul theek nazar aayein ge.
 
 ================================================================================
                                 END OF DOCUMENT
