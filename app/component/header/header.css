@@ -165,6 +165,38 @@
   }
 }
 
+.header-welcome-center {
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: linear-gradient(to right, #6366f1, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  background-color: rgba(99, 102, 241, 0.05);
+  white-space: nowrap;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .header-welcome-center {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+    order: 2; /* Move between logo and icons */
+  }
+}
+
+@media (max-width: 480px) {
+  .header-welcome-center {
+    display: none; /* Hide on very small screens to avoid clutter */
+  }
+}
+
 .mobile-menu-btn {
   display: none;
   background: none;

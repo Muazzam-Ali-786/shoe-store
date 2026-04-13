@@ -52,18 +52,18 @@ export default function Header() {
             <li><Link href="/products" className={`nav-link ${pathname.startsWith('/products') ? 'active' : ''}`}>Products</Link></li>
             <li><Link href="/admin" className={`nav-link ${pathname === '/admin' ? 'active' : ''}`}>Admin</Link></li>
             <li><Link href="/cart" className={`nav-link ${pathname === '/cart' ? 'active' : ''}`}>Cart({cartCount})</Link></li>
-{user ? (
-              <>
-                <li className="nav-link welcome">Welcome,"{user.username}!"</li>
-                <li><Link href="/dashboard" className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}>Dashboard</Link></li>
-              </>
-            ) : (
+            {!user && (
               <>
                 <li><Link href="/login" className="nav-link">Login</Link></li>
                 <li><Link href="/signup" className="nav-link">SignUp</Link></li>
               </>
             )}
           </ul>
+          {user && (
+            <div className="header-welcome-center">
+              Hi, {user.username}! ✨
+            </div>
+          )}
           <div className="search-container">
             <button className="search-icon-btn" type="button" onClick={handleSearchIconClick}>
               🔍
@@ -85,17 +85,17 @@ export default function Header() {
           </div>
         </nav>
         {mobileMenuOpen && (
-          <ul className={`mobile-menu-links ${mobileMenuOpen ? 'show' : ''}`}>
+          <ul 
+            className={`mobile-menu-links ${mobileMenuOpen ? 'show' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
             <li><Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>Home</Link></li>
             <li><Link href="/collections" className={`nav-link ${pathname.startsWith('/collections') ? 'active' : ''}`}>Collections</Link></li>
             <li><Link href="/products" className={`nav-link ${pathname.startsWith('/products') ? 'active' : ''}`}>Products</Link></li>
             <li><Link href="/admin" className={`nav-link ${pathname === '/admin' ? 'active' : ''}`}>Admin</Link></li>
             <li><Link href="/cart" className={`nav-link ${pathname === '/cart' ? 'active' : ''}`}>Cart({cartCount})</Link></li>
             {user ? (
-              <>
-                <li className="nav-link welcome">Welcome, "{user.username}!"</li>
-                <li><Link href="/dashboard" className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}>Dashboard</Link></li>
-              </>
+              <li><Link href="/dashboard" className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}>Dashboard</Link></li>
             ) : (
               <>
                 <li><Link href="/login" className="nav-link">Login</Link></li>

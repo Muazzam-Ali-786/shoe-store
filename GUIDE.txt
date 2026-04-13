@@ -161,6 +161,17 @@ in your dashboard, otherwise the app will crash with "apiKey missing" error:
    - Restructured Cart items and Product Detail sections to stack vertically on mobile.
    - Optimized thumbnail galleries and sticky elements for better touch interaction.
 
+7. STORAGE RESILIENCE & NAVIGATION FIX
+   - Implemented 'safeStorage' utility to prevent app crashes in browsers with restricted 
+     localStorage access (fixes Oppo AK 1 'Access Denied' error).
+   - Added auto-close logic to the mobile menu so it disappears instantly 
+     after a link is clicked.
+
+8. HEADER LAYOUT ENHANCEMENT
+   - Relocated the 'Welcome' user message from the menu bar to the center of the 
+     header for a more premium, personalized feel.
+   - Added responsive visibility to hide the greeting on extremely small mobile screens.
+
 --------------------------------------------------------------------------------
 URDU EXPLANATION (ROMAN URDU)
 --------------------------------------------------------------------------------
@@ -199,6 +210,11 @@ real-life professional store ki tarah kaam kare.
    Mobile par headings boht bari dikhayi de rahi thi aur cheezein aik dusre ke 
    upar aa rahi thin. Maine pooray store ko mobile ke liye set kar diya hai.
    Ab menu, cart aur product details mobile par bilkul theek nazar aayein ge.
+
+7. Error Fix (Oppo/Mobile Storage):
+   Oppo ya kuch aur phones par "Access Denied" ka error aa raha tha. Maine storage 
+   ko "Safe" kar diya hai taake error na aaye aur app crash na kare. Saath hi, 
+   ab mobile menu kisi link par click karte hi khud-ba-khud band ho jaye ga.
 
 ================================================================================
                                 END OF DOCUMENT
