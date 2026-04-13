@@ -140,6 +140,11 @@ STATUS: Major Fixes & Persistence Hardening implemented
    - Added 'product_data.description' to line items so customers can see product
      details directly on the Stripe secure page.
    - Ensures compatibility with latest Stripe.js version (2025+).
+5. DEPENDENCY CLEANUP & BUILD FIX
+   - Removed the incorrect/deprecated "tailwind" package that was causing 10+
+     build warnings (crypto2, uuidv4, etc.).
+   - Confirmed the official Tailwind CSS v4 remains correctly configured in 
+     devDependencies for styling.
 
 --------------------------------------------------------------------------------
 URDU EXPLANATION (ROMAN URDU)
@@ -169,6 +174,11 @@ real-life professional store ki tarah kaam kare.
    naya "Direct URL" wala tareeqa laga diya hai. Saath hi, ab checkout page par
    aapko product ki **description** bhi nazar aaye gi taake user ko pata ho
    woh kya kharid raha hai.
+
+5. Build & Warnings Fix:
+   Project mein aik faaltu "tailwind" package install tha jis ki wajah se build 
+   ke waqt boht saare warnings aa rahe thay. Maine usay remove kar diya hai taake
+   aapka build saaf aur fast ho jaye.
 
 ================================================================================
                                 END OF DOCUMENT
