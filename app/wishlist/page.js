@@ -1,7 +1,8 @@
 "use client";
 
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromWishlist } from '../../../lib/reducers/wishlistSlice';
+import { removeFromWishlist } from '@/lib/reducers/wishlistSlice';
+import { logout, verifyToken } from '@/lib/persistedAuthSlice';
 import Link from 'next/link';
 import ProductCard from '../component/ProductCard';
 import './wishlist.css';
