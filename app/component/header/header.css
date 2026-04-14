@@ -169,7 +169,7 @@
   font-weight: 700;
   font-size: 0.95rem;
   background: linear-gradient(to right, #6366f1, #ec4899);
-  -webkit-background-clip: text;
+  /* : text; */
   -webkit-text-fill-color: transparent;
   padding: 0.5rem 1rem;
   border-radius: 99px;

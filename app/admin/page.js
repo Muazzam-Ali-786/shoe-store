@@ -13,44 +13,60 @@ export default function AdminPage() {
     brand: '',
     price: '',
     description: '',
-    imageURL: '',
     category: 'adults',
     gender: 'MEN',
     stock: 50
   });
+  const [imageFile, setImageFile] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleImageChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setImageFile(e.target.files[0]);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!imageFile) {
+      toast.error('Please select an image file');
+      return;
+    }
+
     setLoading(true);
     
     try {
+      const data = new FormData();
+      for (const key in formData) {
+        data.append(key, formData[key]);
+      }
+      data.append('image', imageFile);
+
       const res = await fetch('/api/products/add', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        // No Content-Type header so browser sets multipart/form-data with boundary automatically
+        body: data,
       });
 
-      const data = await res.json();
-      if (data.success) {
+      const responseData = await res.json();
+      if (responseData.success) {
         toast.success('Product added successfully!');
         setFormData({
           name: '',
           brand: '',
           price: '',
           description: '',
-          imageURL: '',
           category: 'adults',
           gender: 'MEN',
           stock: 50
         });
+        setImageFile(null);
+        e.target.reset(); // Reset the file input field
       } else {
-        toast.error(data.message || 'Failed to add product');
+        toast.error(responseData.message || 'Failed to add product');
       }
     } catch (error) {
       toast.error('An error occurred');
@@ -106,8 +122,8 @@ export default function AdminPage() {
           </div>
 
           <div className="form-group full-width">
-            <label>Image URL</label>
-            <input type="url" name="imageURL" value={formData.imageURL} onChange={handleChange} placeholder="https://unsplash.com/..." required />
+            <label>Upload Image</label>
+            <input type="file" name="image" accept="image/*" onChange={handleImageChange} required />
           </div>
 
           <div className="form-group full-width">
