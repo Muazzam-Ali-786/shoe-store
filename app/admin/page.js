@@ -106,8 +106,8 @@ export default function AdminPage() {
             <div className="form-group">
               <label>Category</label>
               <select name="category" value={formData.category} onChange={handleChange}>
-                <option value="adults">Adults</option>
-                <option value="kids">Kids</option>
+                <option value="Mens">Mens</option>
+                <option value="Womens">Womens</option>
               </select>
             </div>
 
