@@ -58,6 +58,12 @@ export default function Header() {
                 <li><Link href="/signup" className="nav-link">SignUp</Link></li>
               </>
             )}
+            {user && (
+              <>
+                <li><Link href="/dashboard" className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}>Dashboard</Link></li>
+                <li><button onClick={handleLogout} className="logout-btn">Logout</button></li>
+              </>
+            )}
           </ul>
           {user && (
             <div className="header-welcome-center">

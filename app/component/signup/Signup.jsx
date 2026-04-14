@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { login, signup } from '@/lib/persistedAuthSlice';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 // Validation Schemas
 const loginSchema = yup.object().shape({
@@ -28,6 +29,8 @@ const signupSchema = yup.object().shape({
 export default function Signup() {
   const [isLogin, setIsLogin] = useState(true); // Default to login as requested
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -69,6 +72,8 @@ export default function Signup() {
 
   const toggleTab = (loginMode) => {
     setIsLogin(loginMode);
+    setShowPassword(false);
+    setShowConfirmPassword(false);
     reset(); // Clear form when switching tabs
   };
 
@@ -121,24 +126,40 @@ export default function Signup() {
               {errors.email && <span className="error-msg">{errors.email.message}</span>}
             </div>
 
-            <div className="input-group">
+            <div className="input-group password-group">
               <input 
-                type="password" 
+                type={showPassword ? "text" : "password"} 
                 placeholder="Password" 
                 {...register('password')}
                 className={errors.password ? 'input-error' : ''}
               />
+              <button 
+                type="button" 
+                className="password-toggle-btn" 
+                onClick={() => setShowPassword(!showPassword)}
+                tabIndex="-1"
+              >
+                {showPassword ? <FiEyeOff /> : <FiEye />}
+              </button>
               {errors.password && <span className="error-msg">{errors.password.message}</span>}
             </div>
 
             {!isLogin && (
-              <div className="input-group">
+              <div className="input-group password-group">
                 <input 
-                  type="password" 
+                  type={showConfirmPassword ? "text" : "password"} 
                   placeholder="Confirm Password" 
                   {...register('confirmPassword')}
                   className={errors.confirmPassword ? 'input-error' : ''}
                 />
+                <button 
+                  type="button" 
+                  className="password-toggle-btn" 
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  tabIndex="-1"
+                >
+                  {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
+                </button>
                 {errors.confirmPassword && <span className="error-msg">{errors.confirmPassword.message}</span>}
               </div>
             )}
