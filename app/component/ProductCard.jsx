@@ -30,16 +30,15 @@ export default function ProductCard({ product }) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             loading="lazy"
           />
-          <span className="product-badge">
-            {product.is_in_inventory ? `${product.items_left} left` : 'SOLD OUT'}
-          </span>
+          
         </div>
         <div className="card-info">
           <h3 className="product-title">{(product.title || product.name).slice(0, 50)}...</h3>
           <p className="product-brand">{product.brand}</p>
           <p className="price">${product.price}</p>
           {product.is_in_inventory ? (
-            <p className="inventory">In Stock</p>
+            <p className="inventory">In Stock: {product.is_in_inventory ? `${product.items_left} left` : 'SOLD OUT'}
+          </p>
           ) : (
             <p className="out-stock">Out of Stock</p>
           )}

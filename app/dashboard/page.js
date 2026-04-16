@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../lib/reducers/authSlice';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import shoesData from '@/lib/shoesData';
 import ProductCard from '../component/ProductCard';
@@ -10,7 +9,6 @@ import './page.css';
 
 export default function DashboardPage() {
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const cartCount = useSelector((state) => state.cart?.items?.length || 0);
   const wishlistItems = useSelector((state) => state.wishlist?.items || []);
@@ -38,14 +36,6 @@ export default function DashboardPage() {
   return (
     <div className="dashboard-page">
       <div className="container">
-<button 
-            className="dashboard-logout"
-            style={{margin: '8px 0 8px auto'}}
-            onClick={() => dispatch(logout())}
-          >
-            Logout
-          </button>
-
         {/* Hero Stats - Cart Items & Wishlist */}
         <div className="stats-row">
           <div className="stat-left">
