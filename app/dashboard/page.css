@@ -145,6 +145,22 @@
   border-color: #2563eb;
 }
 
+.category-card.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+}
+
+.category-card.active .category-title {
+  color: white;
+}
+
+.category-card.active .category-desc {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .category-emoji {
   font-size: 3.5rem;
   margin-bottom: 1rem;

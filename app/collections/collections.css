@@ -33,14 +33,14 @@
   background: #0056b3;
 }
 
-.category-tabs {
+.gender-tabs {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
 }
 
-.category-tab {
+.gender-tab {
   padding: 0.75rem 1.5rem;
   background: #f5f5f5;
   color: #666;
@@ -49,10 +49,15 @@
   font-weight: 500;
   transition: all 0.3s ease;
   border: 2px solid transparent;
+  cursor: pointer;
 }
 
-.category-tab:hover,
-.category-tab.active {
+.gender-tab:hover {
+  background: #e0e0e0;
+  border-color: #0070f3;
+}
+
+.gender-tab.active {
   background: #0070f3;
   color: white;
   border-color: #0070f3;
@@ -81,7 +86,7 @@
     font-size: 2rem;
   }
   
-  .category-tabs {
+  .gender-tabs {
     justify-content: center;
   }
   

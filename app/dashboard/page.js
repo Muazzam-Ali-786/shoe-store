@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../lib/reducers/authSlice';
 import Link from 'next/link';
@@ -8,6 +9,7 @@ import ProductCard from '../component/ProductCard';
 import './page.css';
 
 export default function DashboardPage() {
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const cartCount = useSelector((state) => state.cart?.items?.length || 0);
@@ -71,15 +73,15 @@ export default function DashboardPage() {
           <h2 className="categories-title">Shop by Category</h2>
           <div className="categories-grid">
             {categories.map((cat, index) => (
-              <Link 
+              <button
                 key={index}
-                href={`/collections?cat=${cat.name.toLowerCase()}`}
-                className="category-card"
+                onClick={() => setSelectedCategory(cat.name)}
+                className={`category-card ${selectedCategory === cat.name ? 'active' : ''}`}
               >
                 <span className="category-emoji">{cat.emoji}</span>
                 <h3 className="category-title">{cat.name}</h3>
                 <p className="category-desc">{cat.desc}</p>
-              </Link>
+              </button>
             ))}
           </div>
         </section>
@@ -88,14 +90,13 @@ export default function DashboardPage() {
         <section className="products-section">
           <div className="products-header">
             <h2 className="products-title">Featured Products</h2>
-            <select className="sort-select">
-              <option>Latest</option>
-              <option>Price Low-High</option>
-              <option>Price High-Low</option>
-            </select>
           </div>
+
           <div className="products-grid">
-            {shoesData.map((product) => (
+            {(selectedCategory 
+              ? shoesData.filter(product => product.category === selectedCategory)
+              : shoesData
+            ).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

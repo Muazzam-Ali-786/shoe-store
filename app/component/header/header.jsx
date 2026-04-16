@@ -101,7 +101,10 @@ export default function Header() {
             <li><Link href="/admin" className={`nav-link ${pathname === '/admin' ? 'active' : ''}`}>Admin</Link></li>
             <li><Link href="/cart" className={`nav-link ${pathname === '/cart' ? 'active' : ''}`}>Cart({cartCount})</Link></li>
             {user ? (
-              <li><Link href="/dashboard" className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}>Dashboard</Link></li>
+              <>
+                <li><Link href="/dashboard" className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}>Dashboard</Link></li>
+                <li><button onClick={handleLogout} className="logout-btn" style={{width: '100%'}}>Logout</button></li>
+              </>
             ) : (
               <>
                 <li><Link href="/login" className="nav-link">Login</Link></li>

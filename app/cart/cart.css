@@ -1,9 +1,11 @@
 /* Premium Shopping Cart Styles */
 .cart-container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 4rem 2rem;
   color: #fff;
+  min-height: 100vh;
+  background-color: #27375b;
 }
 
 .cart-header {
@@ -208,6 +210,12 @@
 .empty-cart {
   text-align: center;
   padding: 6rem 2rem;
+  min-height: 100vh;
+  background-color: #27375b;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .empty-cart h2 {

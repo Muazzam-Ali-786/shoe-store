@@ -102,6 +102,7 @@ export default function ProductDetail() {
             <div className="rating">★ {product.rating}</div>
             
             <div className="gender-category">
+              <span>Gender: {product.gender}</span>
               <span>Category: {product.category.toUpperCase()}</span>
             </div>
 

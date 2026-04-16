@@ -5,7 +5,7 @@ import ProductCard from '../component/ProductCard';
 import shoesData from '../../lib/shoesData';
 import './collections.css';
 
-const categories = ["all","Mens","Womens",];
+const gender = ["all","Mens","Womens"];
 
 export default function CollectionsPage() {
   const searchParams = useSearchParams();
@@ -13,7 +13,7 @@ export default function CollectionsPage() {
 
   const filteredShoes = cat === 'all' 
     ? shoesData 
-    : shoesData.filter(shoe => shoe.category === cat);
+    : shoesData.filter(shoe => shoe.gender === cat);
 
   return (
     <div className="collections-page">
@@ -22,14 +22,14 @@ export default function CollectionsPage() {
         <Link href="/" className="back-home">← Home</Link>
       </div>
       
-      <div className="category-tabs">
-        {categories.map((category) => (
+      <div className="gender-tabs">
+        {gender.map((g) => (
           <Link 
-            key={category}
-            href={`/collections?cat=${category}`}
-            className={`category-tab ${cat === category ? 'active' : ''}`}
+            key={g}
+            href={`/collections?cat=${g}`}
+            className={`gender-tab ${cat === g ? 'active' : ''}`}
           >
-            {category.charAt(0).toUpperCase() + category.slice(1)}
+            {g.charAt(0).toUpperCase() + g.slice(1)}
           </Link>
         ))}
       </div>
