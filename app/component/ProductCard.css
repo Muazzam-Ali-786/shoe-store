@@ -139,7 +139,8 @@
   }
   
   .product-image-container {
-    height: 200px;
+    height: 400px;
+    border-radius: 13px 13px 0.1rem 0.1rem;
   }
 }
 

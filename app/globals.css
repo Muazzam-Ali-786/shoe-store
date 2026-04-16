@@ -29,7 +29,7 @@ body {
   padding: 0 2rem;
 }
 
-/* Glassmorphism Utilities */
+
 .glass-card {
   background: var(--bg-card);
   backdrop-filter: blur(12px);
@@ -39,7 +39,6 @@ body {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -50,7 +49,7 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide Scrollbar */
+
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -73,7 +72,7 @@ body::-webkit-scrollbar {
   background: #475569;
 }
 
-/* Transitions */
+
 a, button {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
